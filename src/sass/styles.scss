@@ -1,4 +1,5 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import 'bootstrap/dist/css/bootstrap.min.css';
 @import './variables';
 @import './mixins';
 
@@ -60,6 +61,11 @@ $fontFamily: Roboto, sans-serif;
 }
 
 .searchbox{
+  font-family: $fontFamily;
+  font-size: $fontSize;
+}
+
+.form-control{
   font-family: $fontFamily;
   font-size: $fontSize;
 }

@@ -1,19 +1,21 @@
 <mat-toolbar color=primary>
   <span>{{app.info.title}}</span>
 
-  <a mat-button routerLink="/fav" routerLinkActive="active">Favorites</a>
-  <a mat-button routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
-  <a mat-button routerLink="/todo" routerLinkActive="active">Todo</a>
+  <button mat-button routerLink="/fav" routerLinkActive="active">Favorites</button>
+  <button mat-button routerLink="/dashboard" routerLinkActive="active">Dashboard</button>
+  <button mat-button routerLink="/todo" routerLinkActive="active">Todo</button>
 
   <span class="fill-remaining-space"></span>
 
   <!--input id="searchbox" type="text" class="searchbox"-->
 
-  <input id="typeahead-basic" type="text" class="form-control" [ngbTypeahead]="search"/>
+  <div>
+    <input id="typeahead-basic" type="text" class="form-control" [ngbTypeahead]="search"/>
+  </div>
 
-  <a mat-button routerLink="/search" routerLinkActive="active">Search</a>
+  <button mat-button routerLink="/search" routerLinkActive="active">Search</button>
 
-  <a mat-button routerLink="/profile" routerLinkActive="active">User</a>
+  <button mat-button routerLink="/profile" routerLinkActive="active">User</button>
 
   <app-language-selection></app-language-selection>
 
