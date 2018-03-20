@@ -1,0 +1,17 @@
+{
+  "TITLE": "something  {{anotherTitle}}",
+
+  "APPINFO": {
+      "title": "NPB",
+      "fullTitle": "Neue PAKT Bedienung",
+      "version": "0.1"
+    },
+
+    "app": {
+      "info": {
+        "fullTitle": "jo",
+        "title": "a yeah",
+        "more": "execss"
+      }
+    }
+}

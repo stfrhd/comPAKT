@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TRANSLATIONS_FORMAT } from '@angular/core';
+import { NpbModule } from '../npb/npb.module';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  public params = { anotherTitle: 'otherParams' };
 
-  ngOnInit() {
+  app = new NpbModule();
+  currentLang: any;
+
+  constructor(translate: TranslateService) {
+    translate.onLangChange.subscribe( v => this.translate(translate) );
+
+    this.currentLang = translate.currentLang;
+
   }
 
+  ngOnInit() {
+    this.app.info.fullTitle = 'itzz a megablast';
+
+    // this.translator.get('app').subscribe( v => this.app = v );
+
+
+
+    // this.translator.get('app.info.fullTitle').subscribe( v => this.app.info.fullTitle = v );
+  }
+
+  translate( translate: TranslateService ) {
+    translate.get('app.info.fullTitle').subscribe( v => this.app.info.fullTitle = v );
+  }
 }

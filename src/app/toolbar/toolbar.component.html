@@ -1,0 +1,20 @@
+<mat-toolbar color=primary>
+  <span>{{app.info.title}}</span>
+
+  <a mat-button routerLink="/fav" routerLinkActive="active">Favorites</a>
+  <a mat-button routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+  <a mat-button routerLink="/todo" routerLinkActive="active">Todo</a>
+
+  <span class="fill-remaining-space"></span>
+
+  <input id="searchbox" type="text" class="searchbox">
+
+  <a mat-button routerLink="/search" routerLinkActive="active">Search</a>
+
+  <a mat-button routerLink="/profile" routerLinkActive="active">User</a>
+
+  <app-language-selection></app-language-selection>
+
+</mat-toolbar>
+
+
