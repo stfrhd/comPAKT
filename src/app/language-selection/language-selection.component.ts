@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-language-selection',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LanguageSelectionComponent implements OnInit {
 
-  constructor() { }
+  public lang = 'lang';
+  translate: TranslateService;
+
+  constructor( translate: TranslateService ) {
+    this.translate = translate;
+  }
 
   ngOnInit() {
   }
 
+  langSelected(lang: string) {
+    this.lang = lang;
+    this.translate.use( lang );
+  }
 }

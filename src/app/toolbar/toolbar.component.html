@@ -7,7 +7,9 @@
 
   <span class="fill-remaining-space"></span>
 
-  <input id="searchbox" type="text" class="searchbox">
+  <!--input id="searchbox" type="text" class="searchbox"-->
+
+  <input id="typeahead-basic" type="text" class="form-control" [ngbTypeahead]="search"/>
 
   <a mat-button routerLink="/search" routerLinkActive="active">Search</a>
 
@@ -16,5 +18,3 @@
   <app-language-selection></app-language-selection>
 
 </mat-toolbar>
-
-
