@@ -29,6 +29,7 @@ import {MatButtonModule, MatCheckboxModule,
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LanguageSelectionComponent } from './language-selection/language-selection.component';
+import { HeaderComponent } from './header/header.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -55,7 +56,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     PageNotFoundComponent,
     FavComponent,
     ToolbarComponent,
-    LanguageSelectionComponent
+    LanguageSelectionComponent,
+    HeaderComponent
   ],
   imports: [
     NgbModule.forRoot(),
