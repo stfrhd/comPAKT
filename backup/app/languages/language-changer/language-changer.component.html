@@ -1,0 +1,17 @@
+<div ngbDropdown class="d-inline-block">
+  <button class="btn btn-outline-primary" ngbDropdownToggle>
+    {{languageService.getLanguage().name}}
+  </button>
+  <div ngbDropdownMenu>
+    <button *ngFor="let language of languageService.getLanguages();" class="dropdown-item" (click)="setLanguage( language )">
+      {{language.name}}
+    </button>
+  </div>
+</div>
+
+<!--mat-select placeholder="{{'LANGUAGES' |translate}}">
+  <mat-option *ngFor="let lang of languageService.getLanguages();" [value]="lang" (click)="setLanguage( lang )">
+      <img src="assets/icons/{{lang.value}}.png"/>
+      {{lang.name}}
+  </mat-option>
+</mat-select-->

@@ -1,0 +1,11 @@
+@import "myTheme";
+
+$md-font-path: "../node_modules/bootstrap-material-icons/fonts";
+
+@import "~bootstrap-material-icons/scss/material-icons";
+@import "~bootstrap/scss/bootstrap";
+
+.dropdown-menu-right{
+  margin-left: -200px;
+}
+

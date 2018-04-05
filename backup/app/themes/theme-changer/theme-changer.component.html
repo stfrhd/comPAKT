@@ -1,0 +1,16 @@
+<div ngbDropdown class="d-inline-block">
+  <button class="btn btn-outline-primary" ngbDropdownToggle>
+    {{themeService.getTheme().name}}
+  </button>
+  <div ngbDropdownMenu>
+    <button *ngFor="let theme of themeService.getThemes();" class="dropdown-item" (click)="setTheme( theme )">
+      {{theme.name}}
+    </button>
+  </div>
+</div>
+
+<select>
+  <option *ngFor="let theme of themeService.getThemes();" [value]="theme" (click)="setTheme( theme )">
+    {{theme.name}}
+  </option>
+</select>

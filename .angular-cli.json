@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "com-pakt"
+    "name": "Prevo PAKT Cockpit"
   },
   "apps": [
     {
@@ -17,13 +17,11 @@
       "test": "test.ts",
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
-      "prefix": "app",
+      "prefix": "prevo",
       "styles": [
-        "sass/styles.scss"
+        "styles.scss"
       ],
-      "scripts": [
-        "../node_modules/hammerjs/hammer.min.js"
-      ],
+      "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
@@ -57,7 +55,6 @@
   },
   "defaults": {
     "styleExt": "scss",
-    "component": {
-    }
+    "component": {}
   }
 }

@@ -1,0 +1,9 @@
+<div ngbDropdown #userMenu="ngbDropdown" class="d-inline-block">
+  <div ngbDropdownMenu class="dropdown-menu-right">
+    <button class="dropdown-item">Action - 1</button>
+    <button class="dropdown-item">Another Action</button>
+    <button class="dropdown-item">Something else is here</button>
+  </div>
+
+  <button class="btn btn-light mdi mdi-face" (click)="$event.stopPropagation(); userMenu.toggle();"></button>
+</div>
