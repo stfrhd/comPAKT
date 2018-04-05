@@ -10,7 +10,7 @@ const routes: Routes = [
       component: MainContainerComponent,
       children: [
           { path: 'f', loadChildren: '../feature-1/feature1.module#Feature1Module' },
-          { path: 'l', component: LoginComponent }
+          { path: '', component: LoginComponent }
       ]
   }
 ];
