@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MainContainerComponent } from './main-container.component';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from '../../play/login/login.component';
 
 const routes: Routes = [
   {
@@ -10,15 +9,17 @@ const routes: Routes = [
       component: MainContainerComponent,
       children: [
           { path: 'f', loadChildren: '../feature-1/feature1.module#Feature1Module' },
-          { path: '', component: LoginComponent }
+          { path: '', loadChildren: '../../play/login/login.module#LoginModule' }
       ]
   }
 ];
 
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [
+    RouterModule.forChild(routes)
+  ],
   exports: [RouterModule],
-  declarations: [LoginComponent]
+  declarations: []
 })
 export class MainRoutingModule { }

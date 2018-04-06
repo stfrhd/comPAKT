@@ -1,22 +1,33 @@
-<div class="login-page" [@routerTransition]>
-    <div class="row justify-content-md-center">
-        <div class="col-md-4">
-            <img src="assets/images/logo.png" width="150px" class="user-avatar" />
-            <h1>{{title}}</h1>
-            <form role="form">
-                <div class="form-content">
-                    <div class="form-group">
-                        <input type="text" ng-model="name" class="form-control input-underline input-lg" id="" placeholder="Email">
-                    </div>
+<div class="login-page">
+  <p>login start</p>
 
-                    <div class="form-group">
-                        <input type="password" class="form-control input-underline input-lg" id="" placeholder="Password">
-                    </div>
-                </div>
-                <a class="btn rounded-btn" [routerLink]="['/dashboard']" (click)="onLoggedin()"> Log in </a>
-                &nbsp;
-                <a class="btn rounded-btn" [routerLink]="['/signup']">Register</a>
-            </form>
-        </div>
-    </div>
+  {{loading |json}}<br>
+  {{model.username}}<br>
+  {{model.password}}<br>
+
+  <div class="mat-app-background">
+    <mat-card class="login-card">
+      <!--img mat-card-lg-image src="../../assets/cockpit.jpg" alt="Cockpit"-->
+      <mat-form-field>
+        <input matInput placeholder="Username" [ngModel]="model.username" (ngModelChange)="model.username = $event">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="Password" type="password" [ngModel]="model.password" (ngModelChange)="model.password = $event">
+      </mat-form-field>
+      <mat-card-actions>
+        <button mat-button (click)="login()">
+          login
+          <mat-icon svgIcon="login"></mat-icon>
+        </button>
+        <button mat-button (click)="register()">
+          register
+          <mat-icon svgIcon="account-plus"></mat-icon>
+        </button>
+
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <p>login stop</p>
+ <mat-spinner></mat-spinner>
 </div>

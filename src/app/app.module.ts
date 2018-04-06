@@ -2,18 +2,71 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+// used to create fake backend
+import { fakeBackendProvider } from '../play/_helpers/index';
+import { JwtInterceptor } from '../play/_helpers/index';
+import { AlertService, AuthenticationService, UserService } from '../play/_services/index';
+
+
+import {
+  SocialLoginModule,
+  AuthServiceConfig,
+  GoogleLoginProvider
+} from 'angular5-social-login';
+import { AlertComponent } from '../play/_directives';
+import { DialogComponent } from '../play/login/login.component';
+import { LoggerService, ConsoleLoggerService } from '../play/_services/log.service';
+
+export function getAuthServiceConfigs() {
+  const config = new AuthServiceConfig(
+    [
+      {
+        id: GoogleLoginProvider.PROVIDER_ID,
+        provider: new GoogleLoginProvider('879205880379-8ora5a6dbbqq2knens6uji74cloi013s.apps.googleusercontent.com')
+      }
+    ]);
+  return config;
+}
 
 @NgModule({
   declarations: [
     AppComponent,
+    AlertComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    CommonModule,
+    AppRoutingModule,
+    HttpClientModule,
+    SocialLoginModule,
   ],
   exports: [],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: AuthServiceConfig,
+      useFactory: getAuthServiceConfigs
+    },
+
+    AlertService,
+    AuthenticationService,
+    UserService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    },
+
+    // provider used to create fake backend
+    fakeBackendProvider,
+    { provide: LoggerService, useClass: ConsoleLoggerService }
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [ DialogComponent ]
 })
 export class AppModule { }
