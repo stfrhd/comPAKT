@@ -24,7 +24,8 @@ const materialModules = [
     MatSelectModule,
     MatGridListModule,
     MatProgressSpinnerModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatExpansionModule
 ];
 
 @NgModule({

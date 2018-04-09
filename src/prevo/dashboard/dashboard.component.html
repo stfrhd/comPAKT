@@ -1,5 +1,7 @@
 <div class="mat-app-background">
 
+
+
   <mat-toolbar>
     <mat-toolbar-row>
       <span>Application Title</span>
@@ -7,27 +9,16 @@
       <!-- This fills the remaining space of the current row -->
       <span class="spacer"></span>
 
+      <div class="img">
+        <button mat-button (click)="search()">
+          <mat-icon svgIcon="magnify"></mat-icon>
+        </button>
+      </div>
 
+      <form class="search-form" [@animateState]="stateExpression">
 
-      <span>Right Aligned Text</span>
-    </mat-toolbar-row>
-  </mat-toolbar>
-
-
-  <mat-card>
-
-      <button (click)="toggle()">toggle</button>
-    <input class="search" type="text" placeholder="search" [@animateState]="stateExpression" (focus)="focusF()" (focusout)="focusOutF()" (mouseover)="onHover()">
-
-
-
-
-    <div class="search-container">
-      <form class="search-form" >
-        <mat-form-field [@animateState]="stateExpression" (mouseover)="onHover()">
-          <input class="search" type="text" placeholder="State" aria-label="Number"
-                matInput [formControl]="stateCtrl" [matAutocomplete]="auto"
-                [@animateState]="stateExpression" (mouseover)="onHover()">
+        <mat-form-field  [@animateState]="stateExpression">
+          <input class="search" type="text" placeholder="State" aria-label="Number" matInput [formControl]="stateCtrl" [matAutocomplete]="auto">
           <mat-autocomplete #auto="matAutocomplete">
             <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
               <!--img style="vertical-align:middle;" aria-hidden src="{{state.flag}}" height="25" /-->
@@ -35,10 +26,28 @@
               <small>Population: {{state.population}}</small>
             </mat-option>
           </mat-autocomplete>
+
         </mat-form-field>
+
       </form>
-    </div>
+      <button mat-button (click)="search()">
+        <mat-icon svgIcon="close"></mat-icon>
+      </button>
+
+      <span>Right Aligned Text</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+
+  <mat-card>
+    contentCard
 
   </mat-card>
 
+
+  <a>
+    <button>
+      <span></span>
+    </button>
+  </a>
 </div>

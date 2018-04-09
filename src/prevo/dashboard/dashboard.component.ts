@@ -13,9 +13,9 @@ export function myAnim2() {
   return trigger(
     'animateState',
     [
-      state('false', style({width: '500px'})),
-      state('true', style({})),
-      transition('false <=> true', animate('0.5s ease-in-out'))
+      state('false', style( {display: 'none', width: '0%'} )),
+      state('true', style({ display: 'inline', width: '100%' })),
+      transition('false <=> true', animate('0.2s ease-in-out'))
     ]);
 }
 
@@ -152,14 +152,18 @@ export class DashboardComponent {
   }
 
   focusF() {
-    this.toggle();
+   // this.toggle();
   }
 
   focusOutF() {
-    this.toggle();
+  //  this.toggle();
   }
 
   onHover() {
+  //  this.toggle();
+  }
+
+  search() {
     this.toggle();
   }
 }
