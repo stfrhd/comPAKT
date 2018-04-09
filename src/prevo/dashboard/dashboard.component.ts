@@ -5,6 +5,21 @@ import {Observable} from 'rxjs/Observable';
 import {startWith} from 'rxjs/operators/startWith';
 import {map} from 'rxjs/operators/map';
 
+import { animate, state, style, transition, trigger } from '@angular/animations';
+
+
+
+export function myAnim2() {
+  return trigger(
+    'animateState',
+    [
+      state('false', style({width: '500px'})),
+      state('true', style({})),
+      transition('false <=> true', animate('0.5s ease-in-out'))
+    ]);
+}
+
+
 export class State {
   constructor(public name: string, public population: string, public flag: string) { }
 }
@@ -12,9 +27,15 @@ export class State {
 @Component({
   selector: 'prevo-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
+  animations: [myAnim2()],
 })
 export class DashboardComponent {
+
+
+  stateExpression = false;
+
+
   stateCtrl: FormControl;
   filteredStates: Observable<any[]>;
 
@@ -106,7 +127,7 @@ export class DashboardComponent {
     this.filteredStates = this.stateCtrl.valueChanges
       .pipe(
         startWith(''),
-        map(state => state ? this.filterStates(state) : this.states.slice())
+        map(s => s ? this.filterStates(s) : this.states.slice())
       );
   }
 
@@ -121,5 +142,24 @@ export class DashboardComponent {
         return match;
       }
     );
+  }
+
+
+
+
+  toggle() {
+    this.stateExpression = !this.stateExpression;
+  }
+
+  focusF() {
+    this.toggle();
+  }
+
+  focusOutF() {
+    this.toggle();
+  }
+
+  onHover() {
+    this.toggle();
   }
 }

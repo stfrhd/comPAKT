@@ -16,16 +16,24 @@
 
   <mat-card>
 
+      <button (click)="toggle()">toggle</button>
+    <input class="search" type="text" placeholder="search" [@animateState]="stateExpression" (focus)="focusF()" (focusout)="focusOutF()" (mouseover)="onHover()">
+
+
+
+
     <div class="search-container">
-      <form class="search-form">
-        <mat-form-field>
-          <input class="search" type="text" placeholder="State" aria-label="Number" matInput [formControl]="stateCtrl" [matAutocomplete]="auto">
+      <form class="search-form" >
+        <mat-form-field [@animateState]="stateExpression" (mouseover)="onHover()">
+          <input class="search" type="text" placeholder="State" aria-label="Number"
+                matInput [formControl]="stateCtrl" [matAutocomplete]="auto"
+                [@animateState]="stateExpression" (mouseover)="onHover()">
           <mat-autocomplete #auto="matAutocomplete">
-              <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
-                  <!--img style="vertical-align:middle;" aria-hidden src="{{state.flag}}" height="25" /-->
-                  <span>{{ state.name }}</span> |
-                  <small>Population: {{state.population}}</small>
-                </mat-option>
+            <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
+              <!--img style="vertical-align:middle;" aria-hidden src="{{state.flag}}" height="25" /-->
+              <span>{{ state.name }}</span> |
+              <small>Population: {{state.population}}</small>
+            </mat-option>
           </mat-autocomplete>
         </mat-form-field>
       </form>
