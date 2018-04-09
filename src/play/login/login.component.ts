@@ -5,6 +5,11 @@ import { AuthenticationService, AlertService } from '../_services';
 import { User } from '../_models';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
+import { ProgOverlayService } from '../overlay/progOverlay.service';
+
+import { ProgOverlayRef } from '../overlay/progOverlay-ref';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'prevo-dialog',
@@ -33,7 +38,17 @@ export class LoginComponent implements OnInit {
     username: 'test',
     password: 'test'
   };
-  loading = false;
+
+  load = false;
+  private _loading: Subject<Boolean> = new Subject<Boolean>();
+  get observeLoading(): Observable<Boolean> {
+    return this._loading.asObservable();
+  }
+  set loading(value: boolean) {
+    this._loading.next(value);
+    this.load = value;
+  }
+
   returnUrl: string;
 
   state: string;
@@ -44,7 +59,8 @@ export class LoginComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private alertService: AlertService,
     private userService: UserService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private previewDialog: ProgOverlayService
   ) { }
 
   openDialog(message: string): void {
@@ -67,11 +83,13 @@ export class LoginComponent implements OnInit {
     this.authenticationService.logout();
 
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
 
   }
 
   login() {
+
+    this.showPreview();
     // this.alertService.error('test');
 
     // this.openDialog();
@@ -81,6 +99,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => {
           this.router.navigate([this.returnUrl]);
+          this.loading = false;
         },
         error => {
           this.alertService.error(error);
@@ -90,6 +109,8 @@ export class LoginComponent implements OnInit {
   }
 
   register() {
+
+    this.showPreview();
 
     const user = new User();
     user.username = this.model.username;
@@ -103,12 +124,23 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => {
           this.alertService.success('Registration successful', true);
-          this.router.navigate(['/login']);
+          this.router.navigate(['/f']);
+          this.loading = false;
         },
         error => {
           this.alertService.error(error);
-         // this.openDialog(error);
+          // this.openDialog(error);
           this.loading = false;
         });
+  }
+
+  showPreview() {
+    const ref = this.previewDialog.open();
+    const sub = this.observeLoading.subscribe( c => {
+      if ( !c && ref ) {
+        sub.unsubscribe();
+        ref.close();
+      }
+    });
   }
 }

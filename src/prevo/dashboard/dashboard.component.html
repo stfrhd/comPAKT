@@ -1,0 +1,36 @@
+<div class="mat-app-background">
+
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <span>Application Title</span>
+
+      <!-- This fills the remaining space of the current row -->
+      <span class="spacer"></span>
+
+
+
+      <span>Right Aligned Text</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+
+  <mat-card>
+
+    <div class="search-container">
+      <form class="search-form">
+        <mat-form-field>
+          <input class="search" type="text" placeholder="State" aria-label="Number" matInput [formControl]="stateCtrl" [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
+                  <!--img style="vertical-align:middle;" aria-hidden src="{{state.flag}}" height="25" /-->
+                  <span>{{ state.name }}</span> |
+                  <small>Population: {{state.population}}</small>
+                </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
+    </div>
+
+  </mat-card>
+
+</div>

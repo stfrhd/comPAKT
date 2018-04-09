@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import {
   MatButtonModule, MatToolbarModule, MatIconRegistry, MatCardModule, MatIconModule,
   MatOptionModule, MatSelectModule, MatExpansionModule, MatDialogModule, MatCheckboxModule,
-  MatRadioModule, MatMenuModule, MatTooltipModule, MatInputModule, MatFormFieldModule, MatGridListModule, MatProgressSpinnerModule
+  MatRadioModule, MatMenuModule, MatTooltipModule, MatInputModule, MatFormFieldModule,
+  MatGridListModule, MatProgressSpinnerModule, MatAutocompleteModule
 } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -22,7 +23,8 @@ const materialModules = [
     MatOptionModule,
     MatSelectModule,
     MatGridListModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatAutocompleteModule
 ];
 
 @NgModule({

@@ -9,7 +9,8 @@ const routes: Routes = [
       component: MainContainerComponent,
       children: [
           { path: 'f', loadChildren: '../feature-1/feature1.module#Feature1Module' },
-          { path: '', loadChildren: '../../play/login/login.module#LoginModule' }
+          { path: 'dashboard', loadChildren: '../../play/login/login.module#LoginModule' },
+          { path: '', loadChildren: '../dashboard/dashboard.module#DashboardModule' }
       ]
   }
 ];

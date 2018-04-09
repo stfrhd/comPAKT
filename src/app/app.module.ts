@@ -21,6 +21,7 @@ import { AlertComponent } from '../play/_directives';
 import { DialogComponent } from '../play/login/login.component';
 import { LoggerService, ConsoleLoggerService } from '../play/_services/log.service';
 
+
 export function getAuthServiceConfigs() {
   const config = new AuthServiceConfig(
     [
@@ -32,11 +33,20 @@ export function getAuthServiceConfigs() {
   return config;
 }
 
+
+
+import { ProgOverlayComponent } from '../play/overlay/progOverlay.component';
+import { ProgOverlayService } from '../play/overlay/progOverlay.service';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { MaterialModule } from '../play/material/material.module';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     AlertComponent,
-    DialogComponent
+    DialogComponent,
+    ProgOverlayComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +55,8 @@ export function getAuthServiceConfigs() {
     AppRoutingModule,
     HttpClientModule,
     SocialLoginModule,
+    OverlayModule,
+    MaterialModule
   ],
   exports: [],
   providers: [
@@ -64,9 +76,10 @@ export function getAuthServiceConfigs() {
 
     // provider used to create fake backend
     fakeBackendProvider,
-    { provide: LoggerService, useClass: ConsoleLoggerService }
+    { provide: LoggerService, useClass: ConsoleLoggerService },
+    ProgOverlayService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ DialogComponent ]
+  entryComponents: [ DialogComponent, ProgOverlayComponent ]
 })
 export class AppModule { }
