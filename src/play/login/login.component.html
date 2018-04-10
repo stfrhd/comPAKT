@@ -9,25 +9,41 @@
     <mat-card class="login-card">
       <!--img mat-card-lg-image src="../../assets/cockpit.jpg" alt="Cockpit"-->
       <mat-form-field>
-        <input matInput placeholder="Username" [ngModel]="model.username" (ngModelChange)="model.username = $event">
+        <input [formControl]="ctrl" [errorStateMatcher]="matcher" matTooltip="Please enter a name" matTooltipPosition="above" required
+          matInput placeholder="Username" [ngModel]="model.username" (ngModelChange)="model.username = $event" (keyup)="onKeyUp()">
+
+        <!--mat-hint>Errors appear instantly!</mat-hint-->
+        <mat-error *ngIf="!ctrl.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
       </mat-form-field>
       <br>
+      <br>
       <mat-form-field>
-        <input matInput placeholder="Password" type="password" [ngModel]="model.password" (ngModelChange)="model.password = $event">
+        <input matTooltip="Please enter a password" matTooltipPosition="above" required matInput placeholder="Password" type="password"
+          [ngModel]="model.password" (ngModelChange)="model.password = $event" (keyup)="onKeyUp()">
       </mat-form-field>
+      <br>
+      <br>
+
       <mat-card-actions>
-        <button mat-button (click)="login()">
+        <button mat-button (click)="login()" [disabled]="loginDisabled">
           login
           <mat-icon svgIcon="login"></mat-icon>
         </button>
-        <button mat-button (click)="register()">
+        <button mat-button (click)="register()" [disabled]="loginDisabled">
           register
           <mat-icon svgIcon="account-plus"></mat-icon>
         </button>
+        <br>
+        <!--button mat-button (click)="register()">
+            <img src="../../assets/icons/btn_google_signin_dark_normal_web.png">
+        </button-->
+        <prevo-feature-1></prevo-feature-1>
 
       </mat-card-actions>
     </mat-card>
   </div>
   <!--p>login stop</p-->
- <!--mat-spinner></mat-spinner-->
+  <!--mat-spinner></mat-spinner-->
 </div>

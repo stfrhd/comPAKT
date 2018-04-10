@@ -80,6 +80,6 @@ import { MaterialModule } from '../play/material/material.module';
     ProgOverlayService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ /*DialogComponent,*/ ProgOverlayComponent ]
+  entryComponents: [ DialogComponent, ProgOverlayComponent ]
 })
 export class AppModule { }

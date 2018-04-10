@@ -3,13 +3,23 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService, AlertService } from '../_services';
 import { User } from '../_models';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, ErrorStateMatcher } from '@angular/material';
 
 import { ProgOverlayService } from '../overlay/progOverlay.service';
 
 import { ProgOverlayRef } from '../overlay/progOverlay-ref';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import { Validators, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
+import { AuthService } from 'angular5-social-login';
+
+/** Error when invalid control is dirty, touched, or submitted. */
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
 
 @Component({
   selector: 'prevo-dialog',
@@ -34,6 +44,12 @@ export class DialogComponent {
 })
 export class LoginComponent implements OnInit {
 
+  matcher = new MyErrorStateMatcher();
+
+  ctrl = new FormControl('',
+    [ Validators.required, Validators.email ]
+  );
+
   model = {
     username: 'test',
     password: 'test'
@@ -53,6 +69,8 @@ export class LoginComponent implements OnInit {
 
   state: string;
 
+  loginDisabled = true;
+
   constructor(/*public router: Router*/
     private route: ActivatedRoute,
     private router: Router,
@@ -71,10 +89,11 @@ export class LoginComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       // console.log('The dialog was closed');
-      /*this.model = {
+      this.model = {
         username: '',
         password: ''
-      };*/
+      };
+      this.onKeyUp();
     });
   }
 
@@ -85,6 +104,7 @@ export class LoginComponent implements OnInit {
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
 
+    this.onKeyUp();
   }
 
   login() {
@@ -102,9 +122,10 @@ export class LoginComponent implements OnInit {
           this.loading = false;
         },
         error => {
-          //this.alertService.error(error);
-          // this.openDialog(error);
+          // this.alertService.error(error);
+
           this.loading = false;
+          this.openDialog(error);
         });
   }
 
@@ -123,14 +144,15 @@ export class LoginComponent implements OnInit {
     this.userService.create(user)
       .subscribe(
         data => {
-          //this.alertService.success('Registration successful', true);
+          // this.alertService.success('Registration successful', true);
           this.router.navigate(['/f']);
           this.loading = false;
         },
         error => {
-          //this.alertService.error(error);
+          // this.alertService.error(error);
           // this.openDialog(error);
           this.loading = false;
+          this.openDialog(error);
         });
   }
 
@@ -142,5 +164,9 @@ export class LoginComponent implements OnInit {
         ref.close();
       }
     });
+  }
+
+  onKeyUp() {
+    this.loginDisabled = this.model.username.length < 1 || this.model.password.length < 1;
   }
 }

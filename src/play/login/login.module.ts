@@ -1,3 +1,5 @@
+import { Feature1Component } from './../../prevo/feature-1/feature-1.component';
+import { Feature1Module } from './../../prevo/feature-1/feature1.module';
 import { MaterialModule } from './../material/material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -13,6 +15,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
       FormsModule,
       ReactiveFormsModule
     ],
-    declarations: [LoginComponent]
+    declarations: [LoginComponent, Feature1Component]
 })
 export class LoginModule {}

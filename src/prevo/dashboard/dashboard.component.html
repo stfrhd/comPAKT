@@ -2,7 +2,7 @@
 
 
 
-  <mat-toolbar>
+  <mat-toolbar style="padding:10px;">
     <mat-toolbar-row>
       <span>Application Title</span>
 
@@ -10,7 +10,7 @@
       <span class="spacer"></span>
 
       <div class="img">
-        <button mat-button (mouseover)="search()">
+        <button mat-button (click)="search()">
           <mat-icon svgIcon="magnify"></mat-icon>
         </button>
       </div>
@@ -43,11 +43,4 @@
     contentCard
 
   </mat-card>
-
-
-  <a>
-    <button>
-      <span></span>
-    </button>
-  </a>
 </div>
