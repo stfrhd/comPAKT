@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
-    private alertService: AlertService,
+    // private alertService: AlertService,
     private userService: UserService,
     public dialog: MatDialog,
     private previewDialog: ProgOverlayService
@@ -102,7 +102,7 @@ export class LoginComponent implements OnInit {
           this.loading = false;
         },
         error => {
-          this.alertService.error(error);
+          //this.alertService.error(error);
           // this.openDialog(error);
           this.loading = false;
         });
@@ -123,12 +123,12 @@ export class LoginComponent implements OnInit {
     this.userService.create(user)
       .subscribe(
         data => {
-          this.alertService.success('Registration successful', true);
+          //this.alertService.success('Registration successful', true);
           this.router.navigate(['/f']);
           this.loading = false;
         },
         error => {
-          this.alertService.error(error);
+          //this.alertService.error(error);
           // this.openDialog(error);
           this.loading = false;
         });
