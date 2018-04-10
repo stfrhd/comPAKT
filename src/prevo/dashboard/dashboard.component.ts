@@ -19,6 +19,17 @@ export function myAnim2() {
     ]);
 }
 
+export function myAnim3() {
+  return trigger(
+    'animateVisible',
+    [
+      state('false', style( {display: 'none'} )),
+      state('true', style({ })),
+      transition('false <=> true', animate('0.2s ease-in-out'))
+    ]
+  );
+}
+
 
 export class State {
   constructor(public name: string, public population: string, public flag: string) { }
@@ -28,12 +39,13 @@ export class State {
   selector: 'prevo-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  animations: [myAnim2()],
+  animations: [myAnim2(), myAnim3()],
 })
 export class DashboardComponent {
 
 
   stateExpression = false;
+  searchVisible = false;
 
 
   stateCtrl: FormControl;
@@ -149,6 +161,7 @@ export class DashboardComponent {
 
   toggle() {
     this.stateExpression = !this.stateExpression;
+    this.searchVisible = this.stateExpression;
   }
 
   focusF() {

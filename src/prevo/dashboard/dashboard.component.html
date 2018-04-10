@@ -10,7 +10,7 @@
       <span class="spacer"></span>
 
       <div class="img">
-        <button mat-button (click)="search()">
+        <button mat-button (mouseover)="search()">
           <mat-icon svgIcon="magnify"></mat-icon>
         </button>
       </div>
@@ -30,7 +30,7 @@
         </mat-form-field>
 
       </form>
-      <button mat-button (click)="search()">
+      <button mat-button (click)="search()" [@animateVisible]="searchVisible">
         <mat-icon svgIcon="close"></mat-icon>
       </button>
 
