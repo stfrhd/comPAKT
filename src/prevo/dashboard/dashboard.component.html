@@ -1,46 +1,62 @@
 <div class="mat-app-background">
 
+  <div class="dashboard">
 
+    <mat-toolbar style="padding:10px;">
+      <mat-toolbar-row>
+        <span>{{title}}</span>
 
-  <mat-toolbar style="padding:10px;">
-    <mat-toolbar-row>
-      <span>Application Title</span>
+        <!-- This fills the remaining space of the current row -->
+        <span class="spacer"></span>
 
-      <!-- This fills the remaining space of the current row -->
-      <span class="spacer"></span>
+        <div class="img">
+          <button mat-button (click)="search()">
+            <mat-icon svgIcon="magnify"></mat-icon>
+          </button>
+        </div>
 
-      <div class="img">
-        <button mat-button (click)="search()">
-          <mat-icon svgIcon="magnify"></mat-icon>
+        <form class="search-form" [@animateState]="stateExpression">
+
+          <mat-form-field [@animateState]="stateExpression">
+            <input class="search" type="text" placeholder="State" aria-label="Number" matInput [formControl]="stateCtrl" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
+                <!--img style="vertical-align:middle;" aria-hidden src="{{state.flag}}" height="25" /-->
+                <span>{{ state.name }}</span> |
+                <small>Population: {{state.population}}</small>
+              </mat-option>
+            </mat-autocomplete>
+
+          </mat-form-field>
+
+        </form>
+        <button mat-button (click)="search()" [@animateVisible]="searchVisible">
+          <mat-icon svgIcon="close"></mat-icon>
         </button>
-      </div>
 
-      <form class="search-form" [@animateState]="stateExpression">
+        <span>Right Aligned Text</span>
+      </mat-toolbar-row>
+    </mat-toolbar>
 
-        <mat-form-field  [@animateState]="stateExpression">
-          <input class="search" type="text" placeholder="State" aria-label="Number" matInput [formControl]="stateCtrl" [matAutocomplete]="auto">
-          <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
-              <!--img style="vertical-align:middle;" aria-hidden src="{{state.flag}}" height="25" /-->
-              <span>{{ state.name }}</span> |
-              <small>Population: {{state.population}}</small>
-            </mat-option>
-          </mat-autocomplete>
+    <mat-card>
+        2do
 
-        </mat-form-field>
-
-      </form>
-      <button mat-button (click)="search()" [@animateVisible]="searchVisible">
-        <mat-icon svgIcon="close"></mat-icon>
-      </button>
-
-      <span>Right Aligned Text</span>
-    </mat-toolbar-row>
-  </mat-toolbar>
+    </mat-card>
 
 
-  <mat-card>
-    contentCard
 
-  </mat-card>
+
+    <!--mat-grid-list cols="1">
+      <mat-grid-tile>
+
+
+
+
+      </mat-grid-tile>
+    </mat-grid-list-->
+
+
+
+
+  </div>
 </div>

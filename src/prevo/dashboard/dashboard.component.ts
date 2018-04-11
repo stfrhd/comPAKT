@@ -6,6 +6,7 @@ import {startWith} from 'rxjs/operators/startWith';
 import {map} from 'rxjs/operators/map';
 
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Title } from '@angular/platform-browser';
 
 
 
@@ -43,6 +44,8 @@ export class State {
 })
 export class DashboardComponent {
 
+
+  title = '';
 
   stateExpression = false;
   searchVisible = false;
@@ -134,7 +137,8 @@ export class DashboardComponent {
 
   ];
 
-  constructor() {
+  constructor(titleService: Title) {
+    this.title = titleService.getTitle();
     this.stateCtrl = new FormControl();
     this.filteredStates = this.stateCtrl.valueChanges
       .pipe(
