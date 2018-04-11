@@ -1,0 +1,6 @@
+<mat-select placeholder="{{'LANGUAGES' |translate}}">
+  <mat-option *ngFor="let lang of languageService.getLanguages();" [value]="lang" (click)="setLanguage( lang )">
+      <img src="assets/icons/{{lang.value}}.png"/>
+      {{lang.name}}
+  </mat-option>
+</mat-select>

@@ -1,0 +1,5 @@
+<mat-select placeholder="{{'THEMES' |translate}}">
+  <mat-option *ngFor="let theme of themeService.getThemes();" [value]="theme" (click)="setTheme( theme )">
+    {{theme.name}}
+  </mat-option>
+</mat-select>
