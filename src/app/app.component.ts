@@ -2,6 +2,7 @@ import { LoggerService } from './../play/_services/log.service';
 import { AlertService } from './../play/_services/alert.service';
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { ThemeService } from '../play/themes/theme.service';
 
 @Component({
   selector: 'prevo-root',
@@ -14,10 +15,11 @@ export class AppComponent implements OnInit {
    // AppGlobals.GOOGLE_CLIENT_ID = '879205880379-8ora5a6dbbqq2knens6uji74cloi013s.apps.googleusercontent.com';
   }
 
-  constructor(translate: TranslateService, private alertService: AlertService, private logger: LoggerService) {
+  constructor(public themeService: ThemeService, translate: TranslateService,
+    private alertService: AlertService, private logger: LoggerService) {
     translate.setDefaultLang('en');
     translate.use('en');
-    
+
     logger.LogMessage.subscribe(
       m => {
         console.log(m);

@@ -4,7 +4,7 @@ import {
   MatButtonModule, MatToolbarModule, MatIconRegistry, MatCardModule, MatIconModule,
   MatOptionModule, MatSelectModule, MatExpansionModule, MatDialogModule, MatCheckboxModule,
   MatRadioModule, MatMenuModule, MatTooltipModule, MatInputModule, MatFormFieldModule,
-  MatGridListModule, MatProgressSpinnerModule, MatAutocompleteModule
+  MatGridListModule, MatProgressSpinnerModule, MatAutocompleteModule, MatChipsModule, MatTableModule
 } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -25,7 +25,9 @@ const materialModules = [
     MatGridListModule,
     MatProgressSpinnerModule,
     MatAutocompleteModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatChipsModule,
+    MatTableModule
 ];
 
 @NgModule({

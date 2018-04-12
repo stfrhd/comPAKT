@@ -59,7 +59,7 @@ export class DashboardComponent {
     {
       name: 'Andrea Müller',
       population: '2.978M',
-      flag: "Partner VN"
+      flag: 'Partner VN'
     },
     {
       name: 'Vertrag 112762940',
@@ -89,7 +89,7 @@ export class DashboardComponent {
 
   ];
 
-  constructor(titleService: Title, private route: ActivatedRoute, private router: Router,) {
+  constructor(titleService: Title, private route: ActivatedRoute, private router: Router ) {
     this.title = titleService.getTitle();
     this.stateCtrl = new FormControl();
     this.filteredStates = this.stateCtrl.valueChanges
@@ -112,9 +112,6 @@ export class DashboardComponent {
     );
   }
 
-
-
-
   toggle() {
     this.stateExpression = !this.stateExpression;
     this.searchVisible = this.stateExpression;
@@ -136,7 +133,19 @@ export class DashboardComponent {
     this.toggle();
   }
 
-  profile(){
+  profile() {
     this.router.navigate(['dashboard/profile']);
+  }
+
+  home() {
+    this.router.navigate(['dashboard']);
+  }
+
+  signOut() {
+    this.router.navigate(['']);
+  }
+
+  todo() {
+    this.router.navigate(['dashboard/todo']);
   }
 }

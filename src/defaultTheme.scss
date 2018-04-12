@@ -13,7 +13,7 @@ $theme: $theme-dark;
 
 @include angular-material-theme($theme);
 $foreground: map-get($theme, foreground);
-$background: map-get($theme-dark, background);
+$background: map-get($theme, background);
 
 $fg: mat-color($foreground, text);
 $bg: mat-color($background, card);
@@ -36,3 +36,10 @@ mat-card.login-card {
    color: mat-color($warn);
 //background-color: $bg;
 }*/
+
+
+.todo-item:hover {
+  /*flex: 1 1 auto;
+  padding: 5px;*/
+  background-color: mat-color($primary);
+}

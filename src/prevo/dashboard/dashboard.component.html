@@ -4,27 +4,26 @@
 
     <mat-toolbar style="padding:10px;">
       <mat-toolbar-row>
-        <span>{{title}}</span>
+        <span><button mat-button (click)="home()" matTooltip="Home" style="font-size: 120%;">
+            <img src="../../assets/icons/plane.png" height="80px">
+            {{title}}
+        </button></span>
 
 
-        
 
-        <!-- This fills the remaining space of the current row -->
-        <span class="spacer"></span>
 
-        <button mat-button (click)="profile()" matTooltip="Favoriten">
+        <button mat-button (click)="todo()" matTooltip="Favoriten">
 
             <mat-icon svgIcon="star"></mat-icon>
         </button>
 
 
-        <button mat-button (click)="profile()" matTooltip="2do">
-          
+        <button mat-button (click)="todo()" matTooltip="2do">
+
             <mat-icon svgIcon="format-list-numbers"></mat-icon>
-            
+
         </button>
 
-        <span class="spacer"></span>
         <span class="spacer"></span>
 
         <div class="img" matTooltip="Search">
@@ -56,12 +55,16 @@
         <button mat-button (click)="profile()" matTooltip="Profile">
             <mat-icon svgIcon="settings"></mat-icon>
         </button>
+
+        <button mat-button (click)="signOut()" matTooltip="Signout">
+            <mat-icon svgIcon="logout"></mat-icon>
+        </button>
       </mat-toolbar-row>
     </mat-toolbar>
 
       <router-outlet></router-outlet>
 
-   
+
 
     <!--mat-grid-list cols="1">
       <mat-grid-tile>
