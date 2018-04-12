@@ -6,10 +6,28 @@
       <mat-toolbar-row>
         <span>{{title}}</span>
 
+
+        
+
         <!-- This fills the remaining space of the current row -->
         <span class="spacer"></span>
 
-        <div class="img">
+        <button mat-button (click)="profile()" matTooltip="Favoriten">
+
+            <mat-icon svgIcon="star"></mat-icon>
+        </button>
+
+
+        <button mat-button (click)="profile()" matTooltip="2do">
+          
+            <mat-icon svgIcon="format-list-numbers"></mat-icon>
+            
+        </button>
+
+        <span class="spacer"></span>
+        <span class="spacer"></span>
+
+        <div class="img" matTooltip="Search">
           <button mat-button (click)="search()">
             <mat-icon svgIcon="magnify"></mat-icon>
           </button>
@@ -18,12 +36,13 @@
         <form class="search-form" [@animateState]="stateExpression">
 
           <mat-form-field [@animateState]="stateExpression">
-            <input class="search" type="text" placeholder="State" aria-label="Number" matInput [formControl]="stateCtrl" [matAutocomplete]="auto">
+            <input class="search" type="text" placeholder="Search" aria-label="Number" matInput [formControl]="stateCtrl" [matAutocomplete]="auto">
             <mat-autocomplete #auto="matAutocomplete">
               <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
                 <!--img style="vertical-align:middle;" aria-hidden src="{{state.flag}}" height="25" /-->
                 <span>{{ state.name }}</span> |
-                <small>Population: {{state.population}}</small>
+                <small>{{state.flag}}</small>|
+                <small>{{state.population}}</small>
               </mat-option>
             </mat-autocomplete>
 
@@ -34,22 +53,15 @@
           <mat-icon svgIcon="close"></mat-icon>
         </button>
 
-        <span>Right Aligned Text</span>
+        <button mat-button (click)="profile()" matTooltip="Profile">
+            <mat-icon svgIcon="settings"></mat-icon>
+        </button>
       </mat-toolbar-row>
     </mat-toolbar>
 
-    <p>before</p>
+      <router-outlet></router-outlet>
 
-    <router-outlet></router-outlet>
-
-    <p>after</p>
-
-    <mat-card>
-  something
-    </mat-card>
-
-
-
+   
 
     <!--mat-grid-list cols="1">
       <mat-grid-tile>

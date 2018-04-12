@@ -3,7 +3,7 @@ import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // used to create fake backend
@@ -21,6 +21,7 @@ import { AlertComponent } from '../play/_directives';
 import { DialogComponent } from '../play/login/login.component';
 import { LoggerService, ConsoleLoggerService } from '../play/_services/log.service';
 
+import {TranslateModule, TranslateService, TranslateLoader} from '@ngx-translate/core';
 
 export function getAuthServiceConfigs() {
   const config = new AuthServiceConfig(
@@ -39,6 +40,14 @@ import { ProgOverlayComponent } from '../play/overlay/progOverlay.component';
 import { ProgOverlayService } from '../play/overlay/progOverlay.service';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { MaterialModule } from '../play/material/material.module';
+import { LanguageService } from '../play/languages/language.service';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { ThemeService } from '../play/themes/theme.service';
+
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 
 @NgModule({
@@ -56,9 +65,16 @@ import { MaterialModule } from '../play/material/material.module';
     HttpClientModule,
     SocialLoginModule,
     OverlayModule,
-    MaterialModule
+    MaterialModule,
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+      }
+    })
   ],
-  exports: [],
+  exports: [TranslateModule],
   providers: [
     {
       provide: AuthServiceConfig,
@@ -68,6 +84,9 @@ import { MaterialModule } from '../play/material/material.module';
     AlertService,
     AuthenticationService,
     UserService,
+    LanguageService,
+    TranslateService,
+    ThemeService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,

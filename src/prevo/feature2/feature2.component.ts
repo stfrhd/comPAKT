@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { LanguageService } from '../../play/languages/language.service';
 
 @Component({
   selector: 'prevo-feature2',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Feature2Component implements OnInit {
 
-  constructor() { }
+  constructor(translate: TranslateService, lang: LanguageService) { }
 
   ngOnInit() {
   }

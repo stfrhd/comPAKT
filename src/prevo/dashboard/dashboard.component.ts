@@ -7,6 +7,7 @@ import {map} from 'rxjs/operators/map';
 
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Title } from '@angular/platform-browser';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 
@@ -56,76 +57,27 @@ export class DashboardComponent {
 
   states: State[] = [
     {
-      name: 'Arkansas',
+      name: 'Andrea Müller',
       population: '2.978M',
-      // https://commons.wikimedia.org/wiki/File:Flag_of_Arkansas.svg
-      flag: 'https://upload.wikimedia.org/wikipedia/commons/9/9d/Flag_of_Arkansas.svg'
+      flag: "Partner VN"
     },
     {
-      name: 'California',
-      population: '39.14M',
+      name: 'Vertrag 112762940',
+      population: 'Hans Schneider AG, Basel',
       // https://commons.wikimedia.org/wiki/File:Flag_of_California.svg
-      flag: 'https://upload.wikimedia.org/wikipedia/commons/0/01/Flag_of_California.svg'
+      flag: 'Vertrag'
     },
     {
-      name: 'Florida',
-      population: '20.27M',
+      name: 'Stefan Rohde',
+      population: '26.2.1976',
       // https://commons.wikimedia.org/wiki/File:Flag_of_Florida.svg
-      flag: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Flag_of_Florida.svg'
+      flag: 'Partner VP'
     },
     {
-      name: 'Texas',
-      population: '27.47M',
+      name: 'Elisabethenanlange 7, 4056 Basel',
+      population: 'Prevo-System-AG',
       // https://commons.wikimedia.org/wiki/File:Flag_of_Texas.svg
-      flag: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Flag_of_Texas.svg'
-    },
-    {
-      name: 'Texas',
-      population: '27.47M',
-      // https://commons.wikimedia.org/wiki/File:Flag_of_Texas.svg
-      flag: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Flag_of_Texas.svg'
-    },
-    {
-      name: 'Texas',
-      population: '27.47M',
-      // https://commons.wikimedia.org/wiki/File:Flag_of_Texas.svg
-      flag: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Flag_of_Texas.svg'
-    },
-    {
-      name: 'Texas',
-      population: '27.47M',
-      // https://commons.wikimedia.org/wiki/File:Flag_of_Texas.svg
-      flag: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Flag_of_Texas.svg'
-    },
-    {
-      name: 'Texas',
-      population: '27.47M',
-      // https://commons.wikimedia.org/wiki/File:Flag_of_Texas.svg
-      flag: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Flag_of_Texas.svg'
-    },
-    {
-      name: 'Texas',
-      population: '27.47M',
-      // https://commons.wikimedia.org/wiki/File:Flag_of_Texas.svg
-      flag: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Flag_of_Texas.svg'
-    },
-    {
-      name: 'Texas',
-      population: '27.47M',
-      // https://commons.wikimedia.org/wiki/File:Flag_of_Texas.svg
-      flag: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Flag_of_Texas.svg'
-    },
-    {
-      name: 'Texas',
-      population: '27.47M',
-      // https://commons.wikimedia.org/wiki/File:Flag_of_Texas.svg
-      flag: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Flag_of_Texas.svg'
-    },
-    {
-      name: 'Texas',
-      population: '27.47M',
-      // https://commons.wikimedia.org/wiki/File:Flag_of_Texas.svg
-      flag: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Flag_of_Texas.svg'
+      flag: 'Adresse'
     },
     {
       name: 'Texas',
@@ -137,7 +89,7 @@ export class DashboardComponent {
 
   ];
 
-  constructor(titleService: Title) {
+  constructor(titleService: Title, private route: ActivatedRoute, private router: Router,) {
     this.title = titleService.getTitle();
     this.stateCtrl = new FormControl();
     this.filteredStates = this.stateCtrl.valueChanges
@@ -182,5 +134,9 @@ export class DashboardComponent {
 
   search() {
     this.toggle();
+  }
+
+  profile(){
+    this.router.navigate(['dashboard/profile']);
   }
 }

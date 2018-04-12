@@ -1,5 +1,14 @@
 {
   "TITLE": "something  {{anotherTitle}}",
+  
+  "LANGUAGES": "langues",
+
+ "english": "Anglais",
+"french": "Français",
+"german": "Allemand",
+"italian": "Italien",
+"technical": "Technical",
+      
 
   "APPINFO": {
       "title": "NPB",
@@ -39,10 +48,10 @@
       },
 
        "languages": {
-          "english": "English",
-          "french": "French",
-          "german": "German",
-          "italian": "Italian",
+          "english": "Anglais",
+          "french": "Français",
+          "german": "Allemand",
+          "italian": "Italien",
           "technical": "Technical"
       }
     }
