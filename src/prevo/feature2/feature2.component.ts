@@ -9,7 +9,7 @@ import { LanguageService } from '../../play/languages/language.service';
 })
 export class Feature2Component implements OnInit {
 
-  constructor(translate: TranslateService, lang: LanguageService) { }
+  constructor(translate: TranslateService, public lang: LanguageService) { }
 
   ngOnInit() {
   }

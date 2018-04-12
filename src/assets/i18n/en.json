@@ -1,10 +1,10 @@
 {
   "LANGTEST": "einTest",
 
-  "LANGUAGES": "languages",
+  "LANGUAGES": "Languages",
 
   "THEMES": "Themes",
-  
+
   "TITLE": "something  {{anotherTitle}}",
 
   "APPINFO": {

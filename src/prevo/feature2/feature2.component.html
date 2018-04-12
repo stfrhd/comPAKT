@@ -1,20 +1,42 @@
-<mat-card>
-  Meine Einstellungen
+<mat-card class="profile-item">
+ Meine Einstellungen
 </mat-card>
 
+<mat-card class="profile-item">
+    <img src="assets/icons/{{lang.getLanguage().value}}.png" height="20px"/>
+  <prevo-language-changer class="profile-item"></prevo-language-changer>
+</mat-card>
+
+<mat-card class="profile-item">
+        <mat-chip-list>
+            <mat-chip color="primary" selected="true">primary</mat-chip>
+            <mat-chip color="accent"  selected="true">accent</mat-chip>
+            <mat-chip color="warn"  selected="true">warn</mat-chip>
+          </mat-chip-list>
+        <prevo-theme-changer ></prevo-theme-changer>
+</mat-card>
+
+
 <mat-grid-list cols="1" rowHeight="20:1">
-  <mat-grid-tile>
-    <prevo-language-changer class="profile-item"></prevo-language-changer>
-  </mat-grid-tile>
-  <mat-grid-tile>
-      <prevo-theme-changer class="profile-item"></prevo-theme-changer>
+
+  <mat-grid-tile class="profile-item">
+
+
+
   </mat-grid-tile>
 
   <mat-grid-tile>
+
+
+  </mat-grid-tile>
+
+  <!--mat-grid-tile class="profile-item">
       <mat-chip-list>
           <mat-chip color="primary" selected="true">primary</mat-chip>
           <mat-chip color="accent"  selected="true">accent</mat-chip>
           <mat-chip color="warn"  selected="true">warn</mat-chip>
         </mat-chip-list>
-  </mat-grid-tile>
+      <prevo-theme-changer ></prevo-theme-changer>
+  </mat-grid-tile-->
+
 </mat-grid-list>
