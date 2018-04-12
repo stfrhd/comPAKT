@@ -7,10 +7,10 @@ import { Feature2Component } from '../feature2/feature2.component';
 const routes: Routes = [
   {
       path: '',
-      component: Feature1Component,
+      component: Feature1Component/*,
       children: [
           { path: 'x', component: Feature2Component }
-      ]
+      ]*/
   }
 ];
 
@@ -18,6 +18,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  declarations: [Feature2Component]
+  declarations: [/*Feature2Component*/]
 })
 export class Feature1RoutingModule { }
